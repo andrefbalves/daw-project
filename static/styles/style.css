@@ -1,0 +1,256 @@
+/* =========================================
+   Reset & Variáveis
+   ========================================= */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Nunito', sans-serif;
+}
+
+:root {
+    --primary-green: #5a8a5a;
+    --primary-green-hover: #4a754a;
+    --secondary-teal: #6bbdbd;
+    --secondary-teal-hover: #5aa6a6;
+    --card-bg: #fffbf0;
+    --text-dark: #4a3f35;
+    --text-light: #8a7d70;
+}
+
+body {
+    height: 100vh;
+    display: flex;
+    flex-direction: column;
+    overflow: hidden; /* Evita scroll na landing page */
+    background-color: #8ed2d9; /* Cor do céu caso a imagem falhe */
+}
+
+/* =========================================
+   Fundo Animado/Imagem
+   ========================================= */
+.farm-background {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: -1;
+    /* Substitui este gradiente pela tua imagem de fundo desenhada */
+    background: linear-gradient(to bottom, #a0e6ed 0%, #a0e6ed 40%, #8dd568 40%, #6ab245 100%);
+    /* Exemplo com imagem: background: url('caminho/para/fundo.jpg') no-repeat center center/cover; */
+}
+
+/* =========================================
+   Navegação
+   ========================================= */
+.navbar {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 20px 40px;
+}
+
+.logo-area {
+    display: flex;
+    align-items: center;
+    gap: 15px;
+    color: var(--text-dark);
+}
+
+.logo-icon {
+    font-size: 3rem;
+    color: #e56b55; /* Cor da crista da galinha */
+}
+
+.logo-text {
+    font-size: 1.2rem;
+    line-height: 1.1;
+    font-weight: 900;
+}
+
+.logo-text span {
+    font-size: 1.8rem;
+}
+
+.nav-links {
+    display: flex;
+    gap: 20px;
+    align-items: center;
+}
+
+.nav-links a {
+    text-decoration: none;
+    color: var(--text-dark);
+    font-weight: 700;
+    font-size: 0.9rem;
+    transition: color 0.3s;
+}
+
+.nav-links a:hover {
+    color: var(--primary-green);
+}
+
+.btn-outline {
+    background: rgba(255,255,255,0.5);
+    padding: 8px 15px;
+    border-radius: 20px;
+    border: 2px solid var(--primary-green);
+}
+
+/* =========================================
+   Cartão de Login (Centro)
+   ========================================= */
+.main-container {
+    flex: 1;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.login-card {
+    background-color: var(--card-bg);
+    width: 100%;
+    max-width: 420px;
+    border-radius: 25px;
+    padding: 30px;
+    box-shadow: 0 15px 30px rgba(0,0,0,0.15);
+    border: 3px solid #f2e3c6;
+    text-align: center;
+}
+
+.card-header h2 {
+    color: var(--text-dark);
+    font-weight: 900;
+    font-size: 1.6rem;
+    margin-bottom: 25px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 10px;
+}
+
+/* =========================================
+   Formulário
+   ========================================= */
+.input-group {
+    text-align: left;
+    margin-bottom: 15px;
+}
+
+.input-group label {
+    display: block;
+    font-size: 0.8rem;
+    font-weight: 900;
+    color: var(--text-dark);
+    margin-bottom: 5px;
+}
+
+.input-group input {
+    width: 100%;
+    padding: 12px;
+    border: 2px solid #d4cbb8;
+    border-radius: 10px;
+    font-size: 1rem;
+    outline: none;
+    background-color: #ffffff;
+    transition: border-color 0.3s;
+}
+
+.input-group input:focus {
+    border-color: var(--primary-green);
+}
+
+.form-actions {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-top: 20px;
+}
+
+.remember-me {
+    font-size: 0.8rem;
+    font-weight: 700;
+    color: var(--text-dark);
+    display: flex;
+    align-items: center;
+    gap: 5px;
+}
+
+.btn-primary {
+    background-color: var(--primary-green);
+    color: white;
+    border: none;
+    padding: 10px 30px;
+    border-radius: 20px;
+    font-weight: 900;
+    font-size: 1rem;
+    cursor: pointer;
+    box-shadow: 0 4px 0 var(--primary-green-hover); /* Efeito 3D */
+    transition: transform 0.1s, box-shadow 0.1s;
+}
+
+.btn-primary:active {
+    transform: translateY(4px);
+    box-shadow: 0 0 0 var(--primary-green-hover);
+}
+
+.forgot-password {
+    margin-top: 15px;
+    text-align: right;
+}
+
+.forgot-password a {
+    color: var(--text-light);
+    font-size: 0.75rem;
+    font-weight: 700;
+    text-decoration: underline;
+}
+
+/* =========================================
+   Divisória e Botões Extra
+   ========================================= */
+.divider {
+    border: none;
+    border-top: 2px dashed #d4cbb8;
+    margin: 20px 0;
+}
+
+.extra-buttons {
+    display: flex;
+    gap: 15px;
+    margin-bottom: 25px;
+}
+
+.btn-secondary {
+    flex: 1;
+    background-color: var(--secondary-teal);
+    color: white;
+    border: none;
+    padding: 15px 10px;
+    border-radius: 15px;
+    font-weight: 900;
+    font-size: 0.8rem;
+    cursor: pointer;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 8px;
+    box-shadow: 0 4px 0 var(--secondary-teal-hover);
+    transition: transform 0.1s, box-shadow 0.1s;
+}
+
+.btn-secondary i {
+    font-size: 1.5rem;
+    color: #ffdf00; /* Dourado para ícones */
+}
+
+.btn-secondary:active {
+    transform: translateY(4px);
+    box-shadow: 0 0 0 var(--secondary-teal-hover);
+}
+
+.outline-dark {
+    width: 100%;
+    background-color: var(--primary-green);
+}
