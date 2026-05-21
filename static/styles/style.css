@@ -13,32 +13,54 @@
     --primary-green-hover: #4a754a;
     --secondary-teal: #6bbdbd;
     --secondary-teal-hover: #5aa6a6;
-    --card-bg: #fffbf0;
+    --panel-bg: rgba(255, 255, 255, 0.34);
+    --panel-border: rgba(255, 255, 255, 0.58);
+    --panel-shadow: 0 18px 40px rgba(60, 80, 55, 0.2);
+    --card-bg: rgba(255, 255, 255, 0.78);
     --text-dark: #4a3f35;
     --text-light: #8a7d70;
 }
 
 body {
-    height: 100vh;
+    min-height: 100vh;
     display: flex;
     flex-direction: column;
-    overflow: hidden; /* Evita scroll na landing page */
     background-color: #8ed2d9; /* Cor do céu caso a imagem falhe */
+    background-image: url('../images/fundo.png');
+    background-repeat: no-repeat;
+    background-position: center center;
+    background-size: cover;
 }
 
 /* =========================================
    Fundo Animado/Imagem
    ========================================= */
 .farm-background {
-    position: absolute;
-    top: 0;
-    left: 0;
+    flex: 1;
     width: 100%;
-    height: 100%;
-    z-index: -1;
-    /* Substitui este gradiente pela tua imagem de fundo desenhada */
-    background: linear-gradient(to bottom, #a0e6ed 0%, #a0e6ed 40%, #8dd568 40%, #6ab245 100%);
-    /* Exemplo com imagem: background: url('caminho/para/fundo.jpg') no-repeat center center/cover; */
+    display: flex;
+}
+
+.content {
+    flex: 1;
+}
+
+.footer {
+    margin-top: auto;
+    padding: 14px 40px;
+    background-color: var(--panel-bg);
+    backdrop-filter: blur(10px);
+    -webkit-backdrop-filter: blur(10px);
+    border-top: 1px solid var(--panel-border);
+    box-shadow: 0 -8px 28px rgba(60, 80, 55, 0.12);
+    color: var(--text-dark);
+    text-align: center;
+    font-size: 0.9rem;
+    font-weight: 800;
+}
+
+.footer p {
+    margin: 3px 0;
 }
 
 /* =========================================
@@ -48,7 +70,12 @@ body {
     display: flex;
     justify-content: space-between;
     align-items: center;
-    padding: 20px 40px;
+    padding: 18px 40px;
+    background-color: var(--panel-bg);
+    backdrop-filter: blur(10px);
+    -webkit-backdrop-filter: blur(10px);
+    border-bottom: 1px solid var(--panel-border);
+    box-shadow: 0 8px 28px rgba(60, 80, 55, 0.12);
 }
 
 .logo-area {
@@ -71,6 +98,35 @@ body {
 
 .logo-text span {
     font-size: 1.8rem;
+}
+
+.header-actions {
+    display: flex;
+    align-items: center;
+    gap: 14px;
+    color: var(--text-dark);
+}
+
+.user-badge {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    padding: 9px 14px;
+    border: 1px solid var(--panel-border);
+    border-radius: 999px;
+    background-color: rgba(255, 255, 255, 0.42);
+    font-weight: 900;
+}
+
+.logout-link {
+    color: var(--text-dark);
+    font-size: 0.9rem;
+    font-weight: 900;
+    text-decoration: none;
+}
+
+.logout-link:hover {
+    color: var(--primary-green-hover);
 }
 
 .nav-links {
@@ -102,32 +158,53 @@ body {
    Cartão de Login (Centro)
    ========================================= */
 .main-container {
-    flex: 1;
+    min-height: 100%;
     display: flex;
     justify-content: center;
-    align-items: center;
+    align-items: flex-start;
+    padding: 34px 20px 44px;
 }
 
 .login-card {
     background-color: var(--card-bg);
     width: 100%;
-    max-width: 420px;
-    border-radius: 25px;
-    padding: 30px;
-    box-shadow: 0 15px 30px rgba(0,0,0,0.15);
-    border: 3px solid #f2e3c6;
+    max-width: 360px;
+    border-radius: 16px;
+    padding: 22px;
+    box-shadow: var(--panel-shadow);
+    border: 1px solid var(--panel-border);
+    backdrop-filter: blur(10px);
+    -webkit-backdrop-filter: blur(10px);
     text-align: center;
 }
 
 .card-header h2 {
     color: var(--text-dark);
     font-weight: 900;
-    font-size: 1.6rem;
-    margin-bottom: 25px;
+    font-size: 1.35rem;
+    margin-bottom: 18px;
     display: flex;
     justify-content: center;
     align-items: center;
     gap: 10px;
+}
+
+.card-header.compact h2 {
+    font-size: 1.2rem;
+    margin-bottom: 18px;
+}
+
+.messages {
+    margin-bottom: 18px;
+}
+
+.message {
+    padding: 10px 12px;
+    border-radius: 10px;
+    background-color: rgba(229, 107, 85, 0.14);
+    color: #8f3424;
+    font-size: 0.9rem;
+    font-weight: 900;
 }
 
 /* =========================================
@@ -135,7 +212,7 @@ body {
    ========================================= */
 .input-group {
     text-align: left;
-    margin-bottom: 15px;
+    margin-bottom: 11px;
 }
 
 .input-group label {
@@ -148,24 +225,26 @@ body {
 
 .input-group input {
     width: 100%;
-    padding: 12px;
-    border: 2px solid #d4cbb8;
+    padding: 10px 12px;
+    border: 1px solid rgba(74, 63, 53, 0.18);
     border-radius: 10px;
     font-size: 1rem;
     outline: none;
-    background-color: #ffffff;
-    transition: border-color 0.3s;
+    background-color: rgba(255, 255, 255, 0.78);
+    color: var(--text-dark);
+    transition: border-color 0.3s, box-shadow 0.3s;
 }
 
 .input-group input:focus {
     border-color: var(--primary-green);
+    box-shadow: 0 0 0 3px rgba(90, 138, 90, 0.16);
 }
 
 .form-actions {
     display: flex;
     justify-content: space-between;
     align-items: center;
-    margin-top: 20px;
+    margin-top: 14px;
 }
 
 .remember-me {
@@ -181,22 +260,26 @@ body {
     background-color: var(--primary-green);
     color: white;
     border: none;
-    padding: 10px 30px;
+    padding: 9px 24px;
     border-radius: 20px;
     font-weight: 900;
     font-size: 1rem;
     cursor: pointer;
-    box-shadow: 0 4px 0 var(--primary-green-hover); /* Efeito 3D */
-    transition: transform 0.1s, box-shadow 0.1s;
+    box-shadow: 0 8px 18px rgba(74, 117, 74, 0.25);
+    transition: transform 0.1s, box-shadow 0.1s, background-color 0.2s;
+}
+
+.btn-primary:hover {
+    background-color: var(--primary-green-hover);
 }
 
 .btn-primary:active {
-    transform: translateY(4px);
-    box-shadow: 0 0 0 var(--primary-green-hover);
+    transform: translateY(2px);
+    box-shadow: 0 4px 12px rgba(74, 117, 74, 0.2);
 }
 
 .forgot-password {
-    margin-top: 15px;
+    margin-top: 10px;
     text-align: right;
 }
 
@@ -213,7 +296,7 @@ body {
 .divider {
     border: none;
     border-top: 2px dashed #d4cbb8;
-    margin: 20px 0;
+    margin: 16px 0;
 }
 
 .extra-buttons {
@@ -227,30 +310,98 @@ body {
     background-color: var(--secondary-teal);
     color: white;
     border: none;
-    padding: 15px 10px;
-    border-radius: 15px;
+    padding: 11px 10px;
+    border-radius: 14px;
     font-weight: 900;
     font-size: 0.8rem;
     cursor: pointer;
     display: flex;
-    flex-direction: column;
+    flex-direction: row;
+    justify-content: center;
     align-items: center;
     gap: 8px;
-    box-shadow: 0 4px 0 var(--secondary-teal-hover);
-    transition: transform 0.1s, box-shadow 0.1s;
+    box-shadow: 0 8px 18px rgba(90, 166, 166, 0.25);
+    transition: transform 0.1s, box-shadow 0.1s, background-color 0.2s;
 }
 
 .btn-secondary i {
-    font-size: 1.5rem;
+    font-size: 1rem;
     color: #ffdf00; /* Dourado para ícones */
 }
 
 .btn-secondary:active {
-    transform: translateY(4px);
-    box-shadow: 0 0 0 var(--secondary-teal-hover);
+    transform: translateY(2px);
+    box-shadow: 0 4px 12px rgba(90, 166, 166, 0.2);
 }
 
 .outline-dark {
     width: 100%;
     background-color: var(--primary-green);
+}
+
+.account-link {
+    text-decoration: none;
+}
+
+.register-form {
+    margin-top: 4px;
+}
+
+.register-card {
+    max-width: 460px;
+}
+
+.terms {
+    margin: 4px 0 18px;
+    justify-content: flex-start;
+}
+
+.register-actions {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 14px;
+}
+
+.back-link {
+    color: var(--text-dark);
+    font-size: 0.9rem;
+    font-weight: 900;
+    text-decoration: none;
+}
+
+.back-link:hover {
+    color: var(--primary-green-hover);
+}
+
+.play-container {
+    align-items: center;
+}
+
+.play-card {
+    max-width: 360px;
+}
+
+.play-button {
+    width: 100%;
+    min-height: 86px;
+    border: none;
+    border-radius: 18px;
+    background-color: var(--primary-green);
+    color: #ffffff;
+    box-shadow: 0 12px 24px rgba(74, 117, 74, 0.28);
+    cursor: pointer;
+    font-size: 2rem;
+    font-weight: 900;
+    letter-spacing: 0;
+    transition: transform 0.1s, box-shadow 0.1s, background-color 0.2s;
+}
+
+.play-button:hover {
+    background-color: var(--primary-green-hover);
+}
+
+.play-button:active {
+    transform: translateY(2px);
+    box-shadow: 0 6px 16px rgba(74, 117, 74, 0.24);
 }

@@ -7,24 +7,34 @@
     <link href="https://fonts.googleapis.com/css2?family=Nunito:wght@400;700;900&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <link rel="stylesheet" href="{{url_for('static', filename='styles/style.css')}}">
-    <script src="{{url_for('static,filename='scripts/main.js')}}"></script>
+    <script src="{{ url_for('static', filename='scripts/main.js') }}"></script>
 </head>
 <body>
+<!-- Barra de Navegação -->
+<header class="navbar">
+    <div class="logo-area">
+        <i class="fa-solid fa-kiwi-bird logo-icon"></i>
+        <h1 class="logo-text">A MINHA QUINTA DE<br><span>GALINHAS</span></h1>
+    </div>
+    <div class="header-actions">
+        {% if current_user %}
+            <span class="user-badge">
+                <i class="fa-solid fa-user"></i>
+                {{ current_user.username }}
+            </span>
+            <a class="logout-link" href="{{ url_for('logout') }}">Sair</a>
+        {% else %}
+            {% block title %}{% endblock %}
+        {% endif %}
+    </div>
+</header>
 <!-- Fundo da Quinta (Placeholder) -->
-    <div class="farm-background"></div>
-
-    <!-- Barra de Navegação -->
-    <header class="navbar">
-        <div class="logo-area">
-            <i class="fa-solid fa-kiwi-bird logo-icon"></i>
-            <h1 class="logo-text">A MINHA QUINTA DE<br><span>GALINHAS</span></h1>
-        </div>
-        {% block title %}{% endblock %}
-    </header>
-<div class=" content ">
-    {% block content %}{% endblock %}
-</div>
-<footer class=" footer ">
+<main class="farm-background">
+    <div class="content">
+        {% block content %}{% endblock %}
+    </div>
+</main>
+<footer class="footer">
     <p>Copyright &copy; 2026 André Alves. Todos os direitos reservados . </p>
     <p>Contacto: andre.alves@esce.ips.pt</p>
 </footer>
